@@ -1,0 +1,60 @@
+{% extends 'base_layout.html' %}
+{% block content %}
+	<center>
+		<h3>Payment Details</h3>
+	</center>
+	<div id="container-background" class="z-depth-1 row" style="padding: 32px 48px 32px 48px; border: 1px solid #EEE;">
+		<div class="row">
+			<div class="col s12 m6 l6">
+				<table>
+					<tbody>
+						<tr>
+							<th>Name</th>
+							<td>{{ payment_details.first_name }} {{ payment_details.last_name }}</td>
+						</tr>
+						<tr>
+							<th>Company Name</th>
+							<td>{{ payment_details.company }}</td>
+						</tr>
+						<tr>
+							<th>Email</th>
+							<td>{{ payment_details.email }}</td>
+						</tr>
+						<tr>
+							<th>Account Manager</th>
+							<td>{{ payment_details.manager }}</td>
+						</tr>
+						<tr>
+							<th>Package</th>
+							<td>{{ payment_details.package }}</td>
+						</tr>
+						<tr>
+							<th>Quantity</th>
+							<td>{{ payment_details.quantity }}</td>
+						</tr>
+						<tr>
+							<th>Coin</th>
+							<td>{{ payment_details.coin }}</td>
+						</tr>
+						<tr>
+							<th>Discount</th>
+							<td>{{ payment_details.coupon_amount }} %</td>
+						</tr>
+						<tr>
+							<th>Amount</th>
+							<td>{{ payment_details.amount }}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="col s12 m6 l6">
+				<center>
+					<p>Please pay {{ payment_details.coin_amount }}{{ payment_details.coin }}</p>
+					<p><img src="{{ payment_details.qrcode }}" alt=""></p>
+					<p>{{ payment_details.address }}</p>
+					<p><a href="{{ payment_details.status }}" target="_blank">Status</a></p>
+				</center>
+			</div>
+		</div>
+	</div>
+{% endblock %}

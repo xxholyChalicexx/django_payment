@@ -1,0 +1,71 @@
+{% extends 'base_layout.html' %}
+{% block content %}
+	<div class="row">
+		<div class="col">
+			<div style="margin-top:20px;"><a href="{% url 'coinpayment:submitform' %}">BACK</a></div>
+		</div>
+		<div class="col right">
+			<div style="margin-top:20px;"><a href="{% url 'accounts:profile' %}">PROFILE</a></div>
+		</div>
+	</div>
+
+	<h3>Coupons</h3>
+	<table>
+		<thead>
+			<tr>
+				<th>Code</th>
+				<th>Package</th>
+				<th>Percent</th>
+				<th>Expiry</th>
+				<th>Frequency</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for coupon in coupon_data %}
+				<tr>
+					<td>{{ coupon.coupon_code }}</td>
+					<td>{{ coupon.package }}</td>
+					<td>{{ coupon.percent }}</td>
+					<td>{{ coupon.expiry }}</td>
+					<td>{{ coupon.frequency }}</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	<br>
+	<h3>History</h3>
+	<table>
+		<thead>
+		<tr>
+			<th>Name</th>
+			<th>Company</th>
+			<th>Email</th>
+			<th>Package</th>
+			<th>Quantity</th>
+			<th>Manager</th>
+			<th>Coin</th>
+			<th>Amount</th>
+			<th>Status</th>	
+		</tr>
+		</thead>
+		<tbody>
+			{% for history in data %}
+				<tr>
+					<td>{{ history.first_name}} {{ history.last_name }}</td>
+					<td>{{ history.company }}</td>
+					<td>{{ history.email }}</td>
+					<td>{{ history.package }}</td>
+					<td>{{ history.quantity }}</td>
+					<td>{{ history.manager }}</td>
+					<td>{{ history.coin }}</td>
+					<td>{{ history.amount }}</td>
+					<td>
+						<u>
+							<a target="_blank" href="{{ history.status }}">Status</a>
+						</u>
+					</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}

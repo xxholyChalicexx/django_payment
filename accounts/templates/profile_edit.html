@@ -1,0 +1,41 @@
+{% extends 'base_layout.html' %}
+{% block content %}
+	<div class="row">
+		<div class="col">
+			<div style="margin-top:20px;"><a href="{% url 'coinpayment:history' %}">BACK</a></div>
+		</div>
+		<div class="col right">
+			<div style="margin-top:20px;"><a href="{% url 'accounts:change_password' %}">CHANGE PASSWORD</a></div>
+		</div>
+	</div>
+	<div class="container" style="margin-top: 60px;">
+		<div class="z-depth-1 row" style="padding: 32px 48px 32px 48px; border: 1px solid #EEE;">
+			<form method="POST">
+				{% csrf_token %}
+				<div class="row">
+					<div class="input-field col s12">
+						<input type="text" name="{{ form.first_name.name }}" id="{{ form.first_name.name }}" value="{{ form.first_name.value }}" class="validate" required="" aria-required="true">
+						<label for="{{ form.first_name.name }}">{{ form.first_name.label }}</label>
+	                </div>
+				</div>
+
+				<div class="row">
+					<div class="input-field col s12">
+						<input type="text" name="{{ form.last_name.name }}" id="{{ form.last_name.name }}" value="{{ form.last_name.value }}" class="validate" required="" aria-required="true">
+						<label for="{{ form.last_name.name }}">{{ form.last_name.label }}</label>
+	                </div>
+				</div>
+
+				<div class="row">
+					<div class="input-field col s12">
+						<input type="email" name="{{ form.email.name }}" id="{{ form.email.name }}" value="{{ form.email.value }}" class="validate" required="" aria-required="true">
+						<label for="{{ form.email.name }}">{{ form.email.label }}</label>
+	                </div>
+				</div>
+				<center>
+		        	<button type="submit" class="btn btn-large waves-effect orange">Save Changes</button>
+		        </center>
+			</form>
+		</div>
+	</div>
+{% endblock %}
